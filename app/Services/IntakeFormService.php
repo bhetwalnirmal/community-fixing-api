@@ -30,14 +30,16 @@ class IntakeFormService extends AbstractService {
             DB::beginTransaction();
             $intake = $data;
             $item = data_get($intake, 'item');
-            $intake = $this->getRepository()->create($data, $options, $user);
             $item = $this->getItemRepository()->create($item, $options, $user);
+            $intake['item_id'] = $item->id;
+            $intake = $this->getRepository()->create($intake, $options, $user);
+
             DB::commit();
 
             return $this->getById($intake->id);
         } catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e, $e->getMessage());
+            throw new Exception($e->getCode(), $e->getMessage());
         }
     }
 
