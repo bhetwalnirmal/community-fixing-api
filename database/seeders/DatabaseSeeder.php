@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTypeTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(FixedTypeSeeder::class);
+        $this->call(ItemTypeSeeder::class);
+        $this->call(ItemSeeder::class);
+        $this->call(IntakeFormSeeder::class);
     }
 }
