@@ -24,16 +24,17 @@ class IntakeFormRepository extends AbstractRepository {
     public function createBaseBuilder(array $fields = [], array $args = [], $user = null) {
         $query = parent::createBaseBuilder($fields, $args, $user);
         $query->whereNull('deleted_at');
-
         $query->with([
-            'item' => function ($query) {
-                $query->with('itemType');
-            },
             'dropInStaff' => function ($query) {
-                $query->select('name');
+                $query = $query->select('name');
             },
             'client' => function ($query) {
-                $query->select('name');
+                $query = $query->select('name');
+            },
+            'item',
+            'item.itemType',
+            'takenStaff' => function ($query) {
+                $query = $query->select('name');
             }
         ]);
 
