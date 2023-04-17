@@ -33,9 +33,7 @@ class IntakeFormRepository extends AbstractRepository {
             },
             'item',
             'item.itemType',
-            'takenStaff' => function ($query) {
-                $query = $query->select('name');
-            }
+            'takenStaff'
         ]);
 
 
