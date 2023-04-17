@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\IntakeFormController;
 use App\Http\Controllers\PostController;
+use App\Models\IntakeForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/', [Controller::class, 'index']);
 
-Route::group(['prefix' => 'post'], function () {
-    Route::get('/', [PostController::class, 'getAll']);
-    Route::post('/create', [PostController::class, 'create']);
+Route::group(['prefix' => 'intakes'], function () {
+    Route::get('/',  [IntakeFormController::class, 'getAll']);
+    Route::post('/create', [IntakeFormController::class, 'create']);
 });

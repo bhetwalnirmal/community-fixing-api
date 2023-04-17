@@ -21,7 +21,21 @@ class IntakeForm extends Model
         'fixed_date',
     ];
 
+    protected $table = 'intake_forms';
+
     public function item () {
-        return $this->hasOne(Item::class, 'item_id', 'id');
+        return $this->hasOne(Item::class, 'id', 'item_id');
+    }
+
+    public function dropInStaff () {
+        return $this->hasOne(User::class, 'id', 'drop_in_staff_id');
+    }
+
+    public function client () {
+        return $this->hasOne(User::class, 'id', 'client_id');
+    }
+
+    public function takenStaff () {
+        return $this->hasOne(User::class, 'id', 'taken_staff_id');
     }
 }

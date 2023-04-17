@@ -25,6 +25,10 @@ class CreateItemTable extends Migration
             $table->double('weight');
             $table->timestamps();
             $table->dateTime('deleted_at')->nullable();
+
+            $table->foreign('item_type_id')
+                ->references('id')
+                ->on('item_types');
         });
     }
 
