@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Intakes\CreateIntakeRequest;
+use App\Services\IntakeFormService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class IntakeFormController extends Controller
 {
-    public function create(Request $request)
+    public function __construct(IntakeFormService $service) {
+        $this->service = $service;
+    }
+
+    public function create(CreateIntakeRequest $request)
     {
         $data = $request->get('intake_form');
         // TODO insert auth user instead of null
