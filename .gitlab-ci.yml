@@ -1,0 +1,17 @@
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+
+
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+    - echo "Its working!"
+    - docker build -t community-fixing-api:local -f Dockerfile .
+    - docker-compose down
+    - docker-compose -f docker-compose.yml up -d
+  tags:
+    - develop
+

@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  community-fixing-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: community-fixing-api-local
+    image: community-fixing-api:local
+    ports:
+       - 20079:80
+    labels:
+       - "traefik.enable=true"
+       - "traefik.http.routers.community-fixing-api.entrypoints=web"
+       - "traefik.http.routers.community-fixing-api.rule=Host(`www.rj.test`)"
+       - "traefik.http.services.community-fixing-api.loadbalancer.server.port=80"
+    volumes:
+      - .:/var/www/html
+      - ~/.cache/composer:/var/www/.composer/cache
+    networks:
+      mynetwork:
+        aliases:
+          - service2
+          
+networks:
+  mynetwork:
+    external:
+      name: local_default
