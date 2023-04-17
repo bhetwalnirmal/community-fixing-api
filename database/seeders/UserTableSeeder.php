@@ -18,16 +18,24 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')
             ->insert([
-                'name' => 'admin',
+                'name' => 'admin1',
                 'password' => Hash::make('admin'),
-                'email' => 'admin@rentandjobs.ca',
-                'user_type' => User::ADMIN,
+                'email' => 'admin1@communityfixing.ca',
+                'user_type_id' => User::ADMIN,
             ]);
-        DB::table('users')
-            ->insert([
-                'name' => 'user',
-                'password' => Hash::make('user'),
-                'email' => 'user@rentandjobs.ca',
-            ]);
+            DB::table('users')
+                ->insert([
+                    'name' => 'client1',
+                    'password' => Hash::make('user'),
+                    'email' => 'client1@communityfixing.ca',
+                    'user_type_id' => User::CLIENT
+                ]);
+            DB::table('users')
+                ->insert([
+                    'name' => 'fixer1',
+                    'password' => Hash::make('user'),
+                    'email' => 'fixer1@communityfixing.ca',
+                    'user_type_id' => User::FIXER
+                ]);
     }
 }
