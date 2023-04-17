@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\IntakeForm;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 
 class IntakeFormRepository extends AbstractRepository {
     public function getModelClass():string {
@@ -22,15 +21,8 @@ class IntakeFormRepository extends AbstractRepository {
         return $this->getById($intake->id);
     }
 
-    public function get(array $fields = [], array $args = [], User $user = null, array $scopes = []): Collection
-    {
-        $query = $this->getListQuery($fields, $args, $user, $scopes);
-
-        return $query->get();
-    }
-
     public function createBaseBuilder(array $fields = [], array $args = [], $user = null) {
-        $query = parent::createBaseBuilder();
+        $query = parent::createBaseBuilder($fields, $args, $user);
         $query->whereNull('deleted_at');
 
         $query->with([
@@ -45,7 +37,17 @@ class IntakeFormRepository extends AbstractRepository {
             }
         ]);
 
+
         return $query;
     }
 
+
+    protected function eagerLoadQuery($query, array $fields = [], array $args = [])
+    {
+        if ($query->has('client')) {
+            $query->with('client');
+        }
+
+        return $query;
+    }
 }

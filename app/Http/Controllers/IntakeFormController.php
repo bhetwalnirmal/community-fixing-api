@@ -17,9 +17,12 @@ class IntakeFormController extends Controller
     {
         $data = $request->get('intake_form');
         // TODO insert auth user instead of null
-        
         $intake_form = $this->getService()->create($data, [], null);
 
         return new Response(['intake_form' => $intake_form], 200, ['Content-Type' => 'application/json']);
+    }
+
+    public function getAll () {
+        return new Response(['intakes' => $this->getService()->getAll()], 200, ['Content-Type' => 'application/json']);
     }
 }

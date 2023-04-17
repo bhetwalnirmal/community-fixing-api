@@ -25,8 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/', [Controller::class, 'index']);
 
 Route::group(['prefix' => 'intakes'], function () {
-    Route::get('/',  function () {
-        return IntakeForm::with(['item'=> function ($query){$query->with('itemType');}])->get();
-    });
+    Route::get('/',  [IntakeFormController::class, 'getAll']);
     Route::post('/create', [IntakeFormController::class, 'create']);
 });
