@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserTypeTable extends Migration
+class CreateFixedTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('fixed_types', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('name');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateUserTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists('fixed_types');
     }
 }
