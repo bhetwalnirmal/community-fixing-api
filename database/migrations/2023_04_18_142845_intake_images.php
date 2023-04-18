@@ -13,12 +13,16 @@ class IntakeImages extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('intake_images', function (Blueprint $table) {
+        Schema::create('intake_form_images', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('intake_form_id');
             $table->string('name');
             $table->timestamps();
-            $table->dateTime('deleted_at');
+            $table->dateTime('deleted_at')->nullable();
+
+            $table->foreign('intake_form_id')
+                ->references('id')
+                ->on('intake_forms');
         });
     }
 
@@ -30,5 +34,6 @@ class IntakeImages extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('intake_form_images');
     }
 }

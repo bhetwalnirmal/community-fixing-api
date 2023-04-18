@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemTypeSeeder::class);
         $this->call(ItemSeeder::class);
         $this->call(IntakeFormSeeder::class);
+        $this->call(IntakeFormImageSeeder::class);
     }
 }
