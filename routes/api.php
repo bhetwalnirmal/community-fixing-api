@@ -5,6 +5,7 @@ use App\Http\Controllers\IntakeFormController;
 use App\Http\Controllers\PostController;
 use App\Models\IntakeForm;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,8 @@ Route::get('/', [Controller::class, 'index']);
 
 Route::group(['prefix' => 'intakes'], function () {
     Route::get('/',  [IntakeFormController::class, 'getAll']);
+    // Route::get('/',  [IntakeFormController::class, function (Request $request) {
+    //     return new Response([["id" => 1]]);
+    // }]);
     Route::post('/create', [IntakeFormController::class, 'create']);
 });
