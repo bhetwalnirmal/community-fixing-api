@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\IntakeFormController;
+use App\Http\Controllers\IntakePhotoController;
 use App\Http\Controllers\PostController;
 use App\Models\IntakeForm;
 use Illuminate\Http\Request;
@@ -31,4 +32,6 @@ Route::group(['prefix' => 'intakes'], function () {
     //     return new Response([["id" => 1]]);
     // }]);
     Route::post('/create', [IntakeFormController::class, 'create']);
+
+    Route::post('/photo', [IntakePhotoController::class, 'create']);
 });

@@ -15,7 +15,7 @@ class IntakeImages extends Migration
     {
         Schema::create('intake_form_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('intake_form_id');
+            $table->unsignedBigInteger('intake_form_id')->nullallbe();
             $table->string('name');
             $table->timestamps();
             $table->dateTime('deleted_at')->nullable();

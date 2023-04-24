@@ -12,5 +12,6 @@ class IntakeFormImage extends Model
     protected $fillable = [
         'intake_form_id',
         'name',
+        'deleted_at',
     ];
 }

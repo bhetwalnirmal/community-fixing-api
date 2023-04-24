@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\IntakeForm;
 use App\Models\User;
 use App\Repositories\IntakeFormRepository;
 use App\Repositories\ItemRepository;
@@ -10,6 +11,7 @@ use App\Repositories\PostRepository;
 use App\Services\AbstractService;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use App\LocalFlysystem;
 
 class IntakeFormService extends AbstractService {
     protected $itemRepository;
@@ -35,8 +37,8 @@ class IntakeFormService extends AbstractService {
             $intake = $this->getRepository()->create($intake, $options, $user);
 
             DB::commit();
-
-            return $this->getById($intake->id);
+            $savedIntakeForm = $this->getById($intake->id);
+            return $savedIntakeForm;
         } catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getCode(), $e->getMessage());

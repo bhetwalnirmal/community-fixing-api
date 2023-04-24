@@ -25,7 +25,7 @@ class CreateIntakeRequest extends FormRequest
     {
         return [
             'intake_form' => 'required',
-            'intake_form.image' => 'sometimes|mimes:jpg,bmp,png',
+            'intake_image' => 'required|mimes:jpg,bmp,png',
             'intake_form.item' => 'required',
             'intake_form.item.item_type_id' => 'required',
             'intake_form.item.name' => 'required',
