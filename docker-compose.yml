@@ -12,17 +12,15 @@ services:
     labels:
        - "traefik.enable=true"
        - "traefik.http.routers.community-fixing-api.entrypoints=web"
-       - "traefik.http.routers.community-fixing-api.rule=Host(`www.rj.test`)"
+      #  - "traefik.http.routers.community-fixing-api.rule=Host(`www.rj.test`)"
+       - traefik.http.routers.community-fixing-api.rule=HostRegexp(`{catchall:.*}`)
        - "traefik.http.services.community-fixing-api.loadbalancer.server.port=80"
     volumes:
       - .:/var/www/html
       - ~/.cache/composer:/var/www/.composer/cache
     networks:
-      mynetwork:
-        aliases:
-          - service2
+      - devops_default
           
 networks:
-  mynetwork:
-    external:
-      name: local_default
+  devops_default:
+    external: true

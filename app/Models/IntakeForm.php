@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class IntakeForm extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
         'item_id',
         'drop_in_staff_id',
@@ -16,6 +16,11 @@ class IntakeForm extends Model
         'taken_staff_id',
         'fixer_id',
         'fixed_type_id',
+        'sjt_id',
+        'client_name',
+        'client_email',
+        'client_phone_number',
+        'client_location',
         'item_code',
         'intake_date',
         'fixed_date',
@@ -37,5 +42,9 @@ class IntakeForm extends Model
 
     public function takenStaff () {
         return $this->hasOne(User::class, 'id', 'taken_staff_id');
+    }
+
+    public static function getIntakeFormImagePath () {
+        return base_path('storage/images/intake_forms');
     }
 }

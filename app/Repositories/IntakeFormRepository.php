@@ -18,7 +18,7 @@ class IntakeFormRepository extends AbstractRepository {
 
         $intake->save();
 
-        return $this->getById($intake->id);
+        return $intake;
     }
 
     public function createBaseBuilder(array $fields = [], array $args = [], $user = null) {
