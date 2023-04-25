@@ -28,9 +28,6 @@ Route::get('/', [Controller::class, 'index']);
 
 Route::group(['prefix' => 'intakes'], function () {
     Route::get('/',  [IntakeFormController::class, 'getAll']);
-    // Route::get('/',  [IntakeFormController::class, function (Request $request) {
-    //     return new Response([["id" => 1]]);
-    // }]);
     Route::post('/create', [IntakeFormController::class, 'create']);
 
     Route::post('/photo', [IntakePhotoController::class, 'create']);

@@ -15,6 +15,7 @@ class IntakeFormController extends Controller
 
     public function create(CreateIntakeRequest $request)
     {
+        info($request);
         $data = $request->get('intake_form');
         if ($request->has('intake_image')) {
             $data['intake_image'] = $request->get('intake_image');

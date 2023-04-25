@@ -16,11 +16,16 @@ class CreateIntakeFormsTable extends Migration
         Schema::create('intake_forms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('item_id')->nullable();
-            $table->unsignedBigInteger('drop_in_staff_id');
-            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('drop_in_staff_id')->nullable();
+            $table->unsignedBigInteger('client_id')->nullable();
             $table->unsignedBigInteger('taken_staff_id')->nullable();
             $table->unsignedBigInteger('fixer_id')->nullable();
             $table->unsignedTinyInteger('fixed_type_id')->nullable();
+            $table->string('sjt_id', 100)->nullable();
+            $table->string('client_name')->nullable();
+            $table->string('client_email')->nullable();
+            $table->string('client_phone_number')->nullable();
+            $table->string('client_location')->nullable();
             $table->string('item_code');
             $table->dateTime('intake_date');
             $table->dateTime('fixed_date')->nullable();

@@ -15,10 +15,12 @@ class IntakeImages extends Migration
     {
         Schema::create('intake_form_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('intake_form_id')->nullallbe();
+            $table->unsignedBigInteger('intake_form_id')
+                ->nullable();
             $table->string('name');
             $table->timestamps();
-            $table->dateTime('deleted_at')->nullable();
+            $table->dateTime('deleted_at')
+                ->nullable();
 
             $table->foreign('intake_form_id')
                 ->references('id')

@@ -34,14 +34,14 @@ class IntakeFormService extends AbstractService {
             $item = data_get($intake, 'item');
             $item = $this->getItemRepository()->create($item, $options, $user);
             $intake['item_id'] = $item->id;
+            // todo - generate ITEM CODE automatically
+            $intake['item_code'] = 'Di11';
             $intake = $this->getRepository()->create($intake, $options, $user);
-
             DB::commit();
-            $savedIntakeForm = $this->getById($intake->id);
-            return $savedIntakeForm;
+            return $intake->refresh();
         } catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getCode(), $e->getMessage());
+            throw $e;
         }
     }
 
