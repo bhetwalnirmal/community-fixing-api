@@ -4,10 +4,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\IntakeFormController;
 use App\Http\Controllers\IntakePhotoController;
 use App\Http\Controllers\PostController;
+use App\LocalFlysystem;
 use App\Models\IntakeForm;
+use App\Models\IntakeFormImage;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +35,11 @@ Route::group(['prefix' => 'intakes'], function () {
     Route::post('/create', [IntakeFormController::class, 'create']);
 
     Route::post('/photo', [IntakePhotoController::class, 'create']);
+    Route::get('/photo', function (Request $request) {
+        // TODO - Authentication / Authorization
+        $photo_id = $request->get('photo_id');
+        if ($photo_id != null)
+            return response()->file(IntakeForm::getIntakeFormImagePath().'/'.$photo_id);
+        throw new NotFoundHttpException();
+    });
 });
