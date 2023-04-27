@@ -47,4 +47,8 @@ class IntakeForm extends Model
     public static function getIntakeFormImagePath () {
         return base_path('storage/images/intake_forms');
     }
+
+    public function intakeImage () {
+        return $this->hasOne(IntakeFormImage::class, 'intake_form_id', 'id');
+    }
 }
