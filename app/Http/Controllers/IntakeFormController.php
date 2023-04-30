@@ -29,7 +29,7 @@ class IntakeFormController extends Controller
         return new Response(['intakes' => $this->getService()->getAll()], 200, ['Content-Type' => 'application/json']);
     }
 
-    public function getById(Request $request) {
-        return $this->getService()->getById($request->get('id'));
+    public function getById($id) {
+        return new Response(['intake_form' => $this->getService()->getById($id)]);
     }
 }
