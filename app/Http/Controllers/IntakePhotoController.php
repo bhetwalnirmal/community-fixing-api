@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Intakes\IntakePhotoRequest;
 use App\Services\IntakePhotoService;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class IntakePhotoController extends Controller
 {
@@ -12,12 +15,17 @@ class IntakePhotoController extends Controller
         $this->service = $service;
     }
 
-    public function create(IntakePhotoRequest $intakePhotoRequest)
+    public function create(Request $intakePhotoRequest)
     {
-        $file = $intakePhotoRequest->file('intake_photo');
+        if ($intakePhotoRequest->has('intake_image')) {
 
-        $intake_photo = $this->getService()->create($file, [], $this->getUser());
+            $file = $intakePhotoRequest->file('intake_image');
 
-        return new Response(['id' => $intake_photo->id]);
+            $intake_photo = $this->getService()->create($file, [], $this->getUser());
+
+            return new Response(['id' => $intake_photo->id]);
+        } else {
+            throw new Exception();
+        }
     }
 }

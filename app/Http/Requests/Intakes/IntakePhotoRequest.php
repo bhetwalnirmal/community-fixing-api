@@ -24,7 +24,6 @@ class IntakePhotoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
         ];
     }
 }

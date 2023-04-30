@@ -28,6 +28,10 @@ class IntakeFormRepository extends AbstractRepository {
             'dropInStaff' => function ($query) {
                 $query = $query->select('name');
             },
+            'intakeImage' => function ($query) {
+                $query = $query->select('id', 'intake_form_id', 'name')
+                    ->whereNull('deleted_at');
+            },
             'client' => function ($query) {
                 $query = $query->select('name');
             },
