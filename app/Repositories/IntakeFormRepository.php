@@ -40,6 +40,8 @@ class IntakeFormRepository extends AbstractRepository {
             'takenStaff'
         ]);
 
+        $query->orderBy('created_at', 'DESC');
+
 
         return $query;
     }
