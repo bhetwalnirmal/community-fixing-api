@@ -47,9 +47,9 @@ class IntakeFormRepository extends AbstractRepository {
 
     protected function eagerLoadQuery($query, array $fields = [], array $args = [])
     {
-        if ($query->has('client')) {
-            $query->with('client');
-        }
+        // if ($query->has('client')) {
+        //     $query->with('client');
+        // }
 
         return $query;
     }
