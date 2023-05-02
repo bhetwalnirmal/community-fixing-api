@@ -31,11 +31,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/', [Controller::class, 'index']);
 
 Route::group(['prefix' => 'intakes'], function () {
+    Route::get('/intake/{id}',  [IntakeFormController::class, 'getById']);
     Route::get('/',  [IntakeFormController::class, 'getAll']);
     Route::post('/create', [IntakeFormController::class, 'create']);
 
     Route::post('/photo', [IntakePhotoController::class, 'create']);
-    Route::get('/photo', function (Request $request) {
+    Route::get('/getPhoto', function (Request $request) {
         // TODO - Authentication / Authorization
         $photo_id = $request->get('photo_id');
         if ($photo_id != null)

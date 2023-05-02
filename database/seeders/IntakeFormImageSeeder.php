@@ -18,7 +18,11 @@ class IntakeFormImageSeeder extends Seeder
             [
                 [
                     'intake_form_id' => 1,
-                    'name' => 'test.png',
+                    'name' => 'test.jpg',
+                ],
+                [
+                    'intake_form_id' => 2,
+                    'name' => 'comfortmate_fan.webp',
                 ]
             ]
         );
