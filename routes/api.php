@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\IntakeFormController;
 use App\Http\Controllers\IntakePhotoController;
@@ -43,4 +44,8 @@ Route::group(['prefix' => 'intakes'], function () {
             return response()->file(IntakeForm::getIntakeFormImagePath().'/'.$photo_id);
         throw new NotFoundHttpException();
     });
+});
+
+Route::group(['prefix' => 'borrows'], function () {
+    Route::get('/',  [BorrowController::class, 'getAll']);
 });
