@@ -6,13 +6,15 @@ use App\Services\AbstractService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Optimus\Bruno\LaravelController;
+
 use App\Models\User;
-class Controller extends BaseController
+class Controller extends LaravelController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected $service;
+    
     
     public function index()
     {
@@ -29,4 +31,5 @@ class Controller extends BaseController
     public function getUser():User {
         return User::find(1);
     }
+
 }
