@@ -17,6 +17,7 @@ class CreateBorrowsTable extends Migration
             $table->id();
             $table->string('client_id', 255)->nullable();
             $table->string('name', 200)->nullable();
+            $table->string('email', 200)->nullable();
             $table->string('phone_number', 20)->nullable();
             $table->string('type_of_tool', 255)->nullable();
             $table->string('model_number', 255)->nullable();

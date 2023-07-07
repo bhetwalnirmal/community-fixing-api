@@ -48,4 +48,5 @@ Route::group(['prefix' => 'intakes'], function () {
 
 Route::group(['prefix' => 'borrows'], function () {
     Route::get('/',  [BorrowController::class, 'getAll']);
+    Route::post('/create', [BorrowController::class, 'create']);
 });

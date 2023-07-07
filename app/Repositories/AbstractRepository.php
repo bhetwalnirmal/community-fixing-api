@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 
 abstract class AbstractRepository
 {
@@ -352,7 +352,7 @@ abstract class AbstractRepository
 
     private function hasCustomMethod($type, $key)
     {
-        $method_name = camel_case($type."_$key");
+        $method_name = Str::camel($type."_$key");
 
         if (method_exists($this, $method_name)) {
             return $method_name;
