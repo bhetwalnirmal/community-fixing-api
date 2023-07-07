@@ -10,12 +10,12 @@ class Borrow extends Model
     use HasFactory;
 
     protected $table = 'borrows';
-    
+
     protected $fillable = [
         'client_id',
         'name',
         'phone_number',
-        'type_of_tooll',
+        'type_of_tool',
         'model_number',
         'accessories',
         'comment',

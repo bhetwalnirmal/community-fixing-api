@@ -14,13 +14,13 @@ class BorrowController extends Controller
 
     public function create (Request $request) {
         $data = $request->get('borrow');
-        
+
         return new Response(['borrow' => $this->getService()->create($data)], 200, ['Content-Type' => 'application/json']);
     }
 
     public function getAll () {
-        // $resourceOptions = $this->parseResourceOptions();
+        $resourceOptions = $this->parseResourceOptions();
         
-        return new Response(['borrows' => $this->getService()->getAll()], 200, ['Content-Type' => 'application/json']);
+        return new Response(['borrows' => $this->getService()->getAll([], $resourceOptions)], 200, ['Content-Type' => 'application/json']);
     }
 }
