@@ -13,6 +13,7 @@ class Borrow extends Model
 
     protected $fillable = [
         'client_id',
+        'email',
         'name',
         'phone_number',
         'type_of_tool',

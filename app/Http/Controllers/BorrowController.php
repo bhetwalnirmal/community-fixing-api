@@ -23,4 +23,8 @@ class BorrowController extends Controller
         
         return new Response(['borrows' => $this->getService()->getAll([], $resourceOptions)], 200, ['Content-Type' => 'application/json']);
     }
+
+    public function getById ($id) {
+        return new Response(['borrows' => $this->getService()->getById($id)], 200, ['Content-Type' => 'application/json']);
+    }
 }
